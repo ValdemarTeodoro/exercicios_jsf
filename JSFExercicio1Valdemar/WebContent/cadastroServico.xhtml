@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Serviço</title>
+</h:head>
+
+<h:body>
+	<h:form>
+	<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+	<h1>Cadastro de Serviço</h1>
+	<h:messages/>
+		<h:panelGrid columns="2">
+			<h:outputText value="Nome do Serviço: *"/>
+			<h:inputText value="#{servicoControllerValdemar.servicoValdemar.nomeServico}"
+				required="true"
+				requiredMessage="O campo nome do serviço é obrigatório!"/>
+			
+			<h:outputText value="Descrição do Serviço: *"/>
+			<h:inputText value="#{servicoControllerValdemar.servicoValdemar.descricaoServico}"
+				required="true"
+				requiredMessage="O campo descrição do serviço é obrigatório!"/>
+			
+			<h:commandButton value="salvar" action="#{servicoControllerValdemar.salvar}"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

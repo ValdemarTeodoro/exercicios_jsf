@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro Motorista</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Cadastro Motorista</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Nome do Motorista"/>
+	<h:inputText value="#{motoristaControllerValdemar.motoristaValdemar.nomeMotorista}"
+		required="true"
+		requiredMessage="O camopo Nome do Motorista é obrigatório"/>
+	
+	<h:outputText value="CPF do Motorista"/>
+	<h:inputText value="#{motoristaControllerValdemar.motoristaValdemar.cpfMotorista}"
+		required="true"
+		requiredMessage="O camopo CPF do Motorista é obrigatório"/>
+		
+	<h:outputText value="CNH do Motorista"/>
+	<h:inputText value="#{motoristaControllerValdemar.motoristaValdemar.cnhMotorista}"
+		required="true"
+		requiredMessage="O camopo CNH do Motorista é obrigatório"/>
+	<h:commandButton value="Salvar" action="#{motoristaControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroMotorista.xhtml" actionListener="#{motoristaControllerValdemar.limparCampos}"/>
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>

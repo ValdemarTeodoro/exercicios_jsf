@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de pais</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Cadastro de pais</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Nome do País: *"/>
+	<h:inputText value="#{paisControllerValdemar.paisValdemar.nomePais}"
+		required="true"
+		requiredMessage="O campo Nome do País é obrigatório!"/>
+	
+	<h:outputText value="Código do País: *"/>
+	<h:inputText value="#{paisControllerValdemar.paisValdemar.codigoPais}"
+		required="true"
+		requiredMessage="O campo Código do País é obrigatório!"/>
+	
+	<h:commandButton value="Salvar" action="#{paisControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroPais.xhtml" actionListener="#{paisControllerValdemar.limparCampos}"/>
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>

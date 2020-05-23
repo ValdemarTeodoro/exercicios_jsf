@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de UF</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Cadastro de UF</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Nome UF: *"/>
+	<h:inputText value="#{uFControllerValdemar.ufValdemar.nomeUf}"
+		required="true"
+		requiredMessage="O campo Nome UF é obrigatório!"/>
+		
+	<h:outputText value="Código UF: *"/>
+	<h:inputText value="#{uFControllerValdemar.ufValdemar.codigoUf}"
+		required="true"
+		requiredMessage="O campo Código UF é obrigatório!"/>
+	
+	<h:outputText value="Sigla UF: *"/>
+	<h:inputText value="#{uFControllerValdemar.ufValdemar.siglaUf}"
+		required="true"
+		requiredMessage="O campo Sigla UF é obrigatório!"/>
+	
+	<h:outputText value="País: *"/>
+	<h:selectOneMenu value="#{uFControllerValdemar.paisSelecionado}" 
+		converter="paisConverter"
+		required="true"
+		requiredMessage="O campo País é obrigatório!">
+		<f:selectItem itemLabel="SELECIONE"/>
+		<f:selectItems value="#{paisControllerValdemar.lista}"
+			var="pais"
+			itemLabel="#{pais.nomePais}"
+			itemValue="#{pais}"/>
+	</h:selectOneMenu>	
+	
+	<h:commandButton value="Salvar" action="#{uFControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroUf.xhtml" actionListener="#{uFControllerValdemar.limparCampos}"/>
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>

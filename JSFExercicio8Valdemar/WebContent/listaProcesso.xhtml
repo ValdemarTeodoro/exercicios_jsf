@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Processos</title>
+</h:head>
+<h:body>
+<h:form>
+	<h1>Lista de Processos</h1>
+	<h:messages/>
+	<h:dataTable border="1" value="#{processoControllerValdemar.lista}" var="processo">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Id"/>
+			</f:facet>
+			<h:outputText value="#{processo.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Número do Processo"/>
+			</f:facet>
+			<h:outputText value="#{processo.numeroProcesso}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Descrição do Processo"/>
+			</f:facet>
+			<h:outputText value="#{processo.descricaoProcesso}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Valor do Processo"/>
+			</f:facet>
+			<h:outputText value="#{processo.valorProcesso}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ação"/>
+			</f:facet>
+			<h:commandButton value="Editar" action="#{processoControllerValdemar.editar}">
+				<f:setPropertyActionListener value="#{processo}" target="#{processoControllerValdemar.processoValdemar}"/>
+			</h:commandButton>
+			<h:commandButton value="Excluir" action="#{processoControllerValdemar.excluir}">
+				<f:setPropertyActionListener value="#{processo}" target="#{processoControllerValdemar.processoValdemar}"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+</h:form>
+</h:body>
+</html>

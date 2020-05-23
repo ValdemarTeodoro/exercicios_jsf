@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Municipio</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Cadastro de Municipio</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Nome Municipio: *"/>
+	<h:inputText value="#{municipioControllerValdemar.municipio.nomeMunicipio}"
+		required="true"
+		requiredMessage="O campo Nome Municipio é obrigatório!"/>
+		
+	<h:outputText value="Código Municipio: *"/>
+	<h:inputText value="#{municipioControllerValdemar.municipio.codigoMunicipio}"
+		required="true"
+		requiredMessage="O campo Código Municipio é obrigatório!"/>
+	
+	<h:outputText value="CNPJ: *"/>
+	<h:inputText value="#{municipioControllerValdemar.municipio.cnpjMunicipio}"
+		required="true"
+		requiredMessage="O campo Sigla UF é obrigatório!"/>
+	
+	<h:outputText value="UF: *"/>
+	<h:selectOneMenu value="#{municipioControllerValdemar.ufSelecionado}" 
+		converter="ufConverter"
+		required="true"
+		requiredMessage="O campo UF é obrigatório!">
+		<f:selectItem itemLabel="SELECIONE"/>
+		<f:selectItems value="#{uFControllerValdemar.lista}"
+			var="uf"
+			itemLabel="#{uf.siglaUf}"
+			itemValue="#{uf}"/>
+	</h:selectOneMenu>	
+	
+	<h:commandButton value="Salvar" action="#{municipioControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroMunicipio.xhtml" actionListener="#{municipioControllerValdemar.limparCampos}"/>
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Bairros</title>
+</h:head>
+<h:body>
+<h:form>
+<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+<h1>Lista de Bairros</h1>
+<h:messages/>
+<h:dataTable border="1" value="#{bairroControllerValdemar.lista}" var="bairro">
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{bairro.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Nome do Bairro"/>
+		</f:facet>
+		<h:outputText value="#{bairro.nomeBairro}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Descrição do Bairro"/>
+		</f:facet>
+		<h:outputText value="#{bairro.descricaoBairro}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Município"/>
+		</f:facet>
+		<h:outputText value="#{bairro.municipioValdemar.nomeMunicipio}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		<h:commandButton value="Editar" action="#{bairroControllerValdemar.editar}">
+			<f:setPropertyActionListener value="#{bairro}" target="#{bairroControllerValdemar.bairroValdemar}"/>
+		</h:commandButton>
+		<h:commandButton value="Excluir" onclick="return confirm('Confirma a exclusão?')" action="#{bairroControllerValdemar.excluir}">
+			<f:setPropertyActionListener value="#{bairro}" target="#{bairroControllerValdemar.bairroValdemar}"/>
+		</h:commandButton>
+	</h:column>
+</h:dataTable>
+</h:form>
+</h:body>
+</html>

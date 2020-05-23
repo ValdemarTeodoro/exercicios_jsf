@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Ordem de Serviço</title>
+</h:head>
+<h:body>
+		<h:form>
+		<h:commandLink value="Menu" action="menu.xhtml"/>
+		<h1>Lista de Ordem de Serviço</h1>
+		<h:dataTable border="1" value="#{ordemServicoControllerValdemar.lista}" var="ordem">
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Id"/>
+				</f:facet>
+				<h:outputText value="#{ordem.id}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Cliente"/>
+				</f:facet>
+				<h:outputText value="#{ordem.cliente.nome}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Serviço"/>
+				</f:facet>
+				<h:outputText value="#{ordem.servico.nomeServico}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor"/>
+				</f:facet>
+				<h:outputText value="#{ordem.valor}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Quantidade"/>
+				</f:facet>
+				<h:outputText value="#{ordem.quantidade}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Desconto"/>
+				</f:facet>
+				<h:outputText value="#{ordem.desconto}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Valor Total"/>
+				</f:facet>
+				<h:outputText value="#{ordem.valorTotal}"/>
+			</h:column>
+			
+			<h:column>
+				<f:facet name="header">
+					<h:outputText value="Ação"/>
+				</f:facet>
+				<h:commandButton value="Editar" action="#{ordemServicoControllerValdemar.editar}">
+					<f:setPropertyActionListener value="#{ordem}" target="#{ordemServicoControllerValdemar.ordem}"/>
+				</h:commandButton>
+				<h:commandButton onclick="return confirm('Confirma a exclusão!')" value="Excluir" action="#{ordemServicoControllerValdemar.excluir}">
+					<f:setPropertyActionListener value="#{ordem}" target="#{ordemServicoControllerValdemar.ordem}"/>
+				</h:commandButton>
+			</h:column>
+			</h:dataTable>
+		</h:form>
+	</h:body>
+</html>

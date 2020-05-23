@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Serviços</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h1>Lista de Serviços</h1>	
+	<h:messages/>
+	<h:dataTable border="1" value="#{servicoControllerValdemar.lista}" var="servico">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Id"/>			
+			</f:facet>
+			<h:outputText value="#{servico.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Nome do Serviço"/>			
+			</f:facet>
+			<h:outputText value="#{servico.nomeServico}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Idade"/>			
+			</f:facet>
+			<h:outputText value="#{servico.descricaoServico}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ação"/>			
+			</f:facet>
+			<h:commandButton value="Editar" action="#{servicoControllerValdemar.editar}">
+				<f:setPropertyActionListener value="#{servico}" target="#{servicoControllerValdemar.servicoValdemar}"/>
+			</h:commandButton>
+			<h:commandButton onclick="return confirm('Confirma a exclusão?')" value="Excluir" action="#{servicoControllerValdemar.excluir}">
+				<f:setPropertyActionListener value="#{servico}" target="#{servicoControllerValdemar.servicoValdemar}"/>
+			</h:commandButton>
+		</h:column>
+		
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Contratos</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Lista de Contratos</h1>
+<h:messages/>
+	<h:dataTable border="1" value="#{contratoControllerValdemar.lista}" var="contrato">
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Id"/>
+			</f:facet>
+				<h:outputText value="#{contrato.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Número de Contrato"/>
+			</f:facet>
+				<h:outputText value="#{contrato.numeroContrato}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Descrição de Contrato"/>
+			</f:facet>
+				<h:outputText value="#{contrato.descricaoContrato}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Data de Início de Contrato"/>
+			</f:facet>
+				<h:outputText value="#{contrato.dataInicio}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Data do Fim de Contrato"/>
+			</f:facet>
+				<h:outputText value="#{contrato.dataFim}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Valor de Contrato"/>
+			</f:facet>
+				<h:outputText value="#{contrato.valorContrato}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Data de Início"/>
+			</f:facet>
+				<h:outputText value="#{contrato.processoValdemar.descricaoProcesso}"/>
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ação"/>
+			</f:facet>
+			<h:commandButton value="Editar" action="#{contratoControllerValdemar.editar}">
+				<f:setPropertyActionListener value="#{contrato}" target="#{contratoControllerValdemar.contratoValdemar}"/>
+			</h:commandButton>
+			<h:commandButton value="Excluir" action="#{contratoControllerValdemar.excluir}">
+				<f:setPropertyActionListener value="#{contrato}" target="#{contratoControllerValdemar.contratoValdemar}"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+</h:form>
+</h:body>
+</html>

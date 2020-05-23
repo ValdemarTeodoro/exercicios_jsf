@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Livro</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+		<h1>Cadastro de Livro</h1>
+		<h:messages/>
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Livro: *"/>
+			<h:inputText value="#{livroControllerValdemar.livroValdemar.nomeLivro}"
+			 	required="true"
+			 	requiredMessage="O Campo livro é obrigatório!"/>
+			 	
+			<h:outputText value="Editora: *"/>
+			<h:selectOneMenu value="#{livroControllerValdemar.editoraSelecionada}"
+				converter="editoraConverter"
+				required="true"
+				requiredMessage="O campo editóra é obrigatório!">
+				<f:selectItem itemLabel="SELECIONE"/>
+				<f:selectItems value="#{editoraControllerValdemar.lista}"
+					var="livro"
+					itemLabel="#{livro.editora}"
+					itemValue="#{livro}"/>
+			</h:selectOneMenu>
+			
+			<h:outputText value="Valor: *"/>
+			<h:inputText value="#{livroControllerValdemar.livroValdemar.valor}"
+				required="true"
+				requiredMessage="O campo valor é obrigatório!">
+				<f:validateDoubleRange minimum="0.01"/>
+			</h:inputText>
+			
+			<h:commandButton value="Salvar" action="#{livroControllerValdemar.salvar}"/>
+			<h:commandButton value="Limpar" action="cadastroLivro.xhtml" actionListener="#{livroControllerValdemar.limparCampos}"/>
+				
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

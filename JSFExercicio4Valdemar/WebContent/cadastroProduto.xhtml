@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Produto</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+		<h1>Cadastro de Produto</h1>
+		<h:messages/>
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Produto: *"/>
+			<h:inputText value="#{produtoControllerValdemar.produto.produto}"
+			 	required="true"
+			 	requiredMessage="O Campo produto é obrigatório!"/>
+			 	
+			<h:outputText value="Fornecedor: *"/>
+			<h:selectOneMenu value="#{produtoControllerValdemar.fornecedorSelecionado}"
+				converter="fornecedorConverter"
+				required="true"
+				requiredMessage="O campo fornecedor é obrigatório!">
+				<f:selectItem itemLabel="SELECIONE"/>
+				<f:selectItems value="#{fornecedorControllerValdemar.lista}"
+					var="produto"
+					itemLabel="#{produto.fornecedor}"
+					itemValue="#{produto}"/>
+			</h:selectOneMenu>
+			
+			<h:outputText value="Valor: *"/>
+			<h:inputText value="#{produtoControllerValdemar.produto.valor}"
+				required="true"
+				requiredMessage="O campo valor é obrigatório!">
+				<f:validateDoubleRange minimum="0.01"/>
+			</h:inputText>
+			
+			<h:commandButton value="Salvar" action="#{produtoControllerValdemar.salvar}"/>
+			<h:commandButton value="Limpar" action="cadastroProduto.xhtml" actionListener="#{produtoControllerValdemar.limparCampos}"/>
+				
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

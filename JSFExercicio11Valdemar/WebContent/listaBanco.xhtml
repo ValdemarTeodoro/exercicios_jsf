@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Bancos</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Lista de Bancos</h1>
+<h:messages/>
+<h:dataTable border="1" value="#{bancoControllerValdemar.lista}" var="banco">
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="ID"/>
+		</f:facet>
+		<h:outputText value="#{banco.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Nome do Banco"/>
+		</f:facet>
+		<h:outputText value="#{banco.nomeBanco}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Código do Banco"/>
+		</f:facet>
+		<h:outputText value="#{banco.codgioBanco}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="CNPJ do Banco"/>
+		</f:facet>
+		<h:outputText value="#{banco.cnpjBanco}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		<h:commandButton value="Editar" action="#{bancoControllerValdemar.editar}">
+			<f:setPropertyActionListener value="#{banco}" target="#{bancoControllerValdemar.bancoValdemar}"/>
+		</h:commandButton>
+		<h:commandButton value="Excluir" onclick="return confirm('Confrima a exclusão?')" action="#{bancoControllerValdemar.excluir}">
+			<f:setPropertyActionListener value="#{banco}" target="#{bancoControllerValdemar.bancoValdemar}"/>
+		</h:commandButton>
+	</h:column>
+
+</h:dataTable>
+</h:form>
+</h:body>
+</html>

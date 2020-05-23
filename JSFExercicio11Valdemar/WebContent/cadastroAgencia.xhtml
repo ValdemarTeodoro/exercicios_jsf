@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro Banco</title>
+</h:head>
+<h:body>
+<h:form>
+	<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+	<h1>Cadastro Banco</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Nome da Agência: *"/>
+	<h:inputText value="#{agenciaControllerValdemar.agenciaValdemar.nomeAgencia}"
+		required="true"
+		requiredMessage="O campo Nome da Agência é obrigatório!"/>
+
+
+	<h:outputText value="Código da Agencia: *"/>
+	<h:inputText value="#{agenciaControllerValdemar.agenciaValdemar.codigoAgencia}"
+		required="true"
+		requiredMessage="O campo Código da Agencia é obrigatório!"/>
+
+
+	<h:outputText value="Digito Verificador: *"/>
+	<h:inputText value="#{agenciaControllerValdemar.agenciaValdemar.digitoVerificador}"
+		required="true"
+		requiredMessage="O campo Digito Verificador é obrigatório!"/>
+	
+	<h:outputText value="Banco: *"/>
+	<h:selectOneMenu value="#{agenciaControllerValdemar.bancoSelecionado}"
+		converter="bancoConverter"
+		required="true"
+		requiredMessage="O campo Banco é obrigatório!">
+		<f:selectItem itemLabel="SELECIONE"/>
+		<f:selectItems value="#{bancoControllerValdemar.lista}"
+			var="banco"
+			itemLabel="#{banco.nomeBanco}"
+			itemValue="#{banco}"/>
+	</h:selectOneMenu>
+	
+	<h:commandButton value="Salvar" action="#{agenciaControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroAgencia.xhtml" actionListener="#{agenciaControllerValdemar.limparCampos}"/>
+
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>

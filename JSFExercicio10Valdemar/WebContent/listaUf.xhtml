@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista UF</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Lista UF</h1>
+<h:messages/>
+<h:dataTable border="1" value="#{uFControllerValdemar.lista}" var="uf">
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{uf.id}"/>
+	</h:column>
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Nome UF"/>
+		</f:facet>
+		<h:outputText value="#{uf.nomeUf}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Código UF"/>
+		</f:facet>
+		<h:outputText value="#{uf.codigoUf}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Sigla UF"/>
+		</f:facet>
+		<h:outputText value="#{uf.siglaUf}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Nome do País"/>
+		</f:facet>
+		<h:outputText value="#{uf.paisValdemar.nomePais}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		<h:commandButton value="Editar" action="#{uFControllerValdemar.editar}">
+			<f:setPropertyActionListener value="#{uf}" target="#{uFControllerValdemar.ufValdemar}"/>
+		</h:commandButton>
+		<h:commandButton value="Excluir" action="#{uFControllerValdemar.excluir}">
+			<f:setPropertyActionListener value="#{uf}" target="#{uFControllerValdemar.ufValdemar}"/>
+		</h:commandButton>
+	</h:column>
+</h:dataTable>
+</h:form>
+</h:body>
+</html>

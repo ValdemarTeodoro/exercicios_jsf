@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista Veiculo</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Lista Veiculo</h1>
+<h:messages/>
+<h:dataTable border="1" value="#{veiculoControllerValdemar.lista}" var="veiculo">
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Id"/>
+		</f:facet>
+		<h:outputText value="#{veiculo.id}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Gravidade"/>
+		</f:facet>
+		<h:outputText value="#{veiculo.gravidadeVeiculo}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Descrição"/>
+		</f:facet>
+		<h:outputText value="#{veiculo.descricaoVeiculo}"/>
+	</h:column>
+	
+	<h:column>
+		<f:facet name="header">
+			<h:outputText value="Ação"/>
+		</f:facet>
+		<h:commandButton value="Editar" action="#{veiculoControllerValdemar.editar}">
+			<f:setPropertyActionListener value="#{veiculo}" target="#{veiculoControllerValdemar.veiculoValdemar}"/>
+		</h:commandButton>
+		<h:commandButton value="Excluir" onclick="return confirm('Confrima a exclusão?')" action="#{veiculoControllerValdemar.excluir}">
+			<f:setPropertyActionListener value="#{veiculo}" target="#{veiculoControllerValdemar.veiculoValdemar}"/>
+		</h:commandButton>
+	</h:column>
+</h:dataTable>
+</h:form>
+</h:body>
+</html>

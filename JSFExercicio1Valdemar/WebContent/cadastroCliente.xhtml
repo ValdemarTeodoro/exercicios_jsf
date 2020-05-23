@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Cliente</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+	<h1>Cadastro de Cliente</h1>
+	<h:messages/>
+		<h:panelGrid columns="2">
+		
+			<h:outputText value="Nome: *"/>
+			<h:inputText value="#{clienteControllerValdemar.cliente.nome}"
+				required="true"
+				requiredMessage="O campo Nome é obrigatório!"/>
+			
+			<h:outputText value="Idade: *"/>
+			<h:inputText value="#{clienteControllerValdemar.cliente.idade}"
+				required="true"
+				requiredMessage="O campo Idade é obrigatório!">
+				<f:validateLongRange minimum="1"/>
+			</h:inputText>
+			
+			<h:commandButton value="Salvar" action="#{clienteControllerValdemar.salvar}"/>
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Produto</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h:commandLink value="Menu" action="menu.xhtml" immediate="true"/>
+	<h1>Lista de Produto</h1>
+	<h:messages/>
+	<h:dataTable border="1" value="#{produtoControllerValdemar.lista}" var="produto">
+	
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Id"/>
+			</f:facet>
+			<h:outputText value="#{produto.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Produto"/>
+			</f:facet>
+			<h:outputText value="#{produto.descricao}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ação"/>
+			</f:facet>
+			<h:commandButton value="Editar" action="#{produtoControllerValdemar.editar}">
+				<f:setPropertyActionListener value="#{produto}" target="#{produtoControllerValdemar.produto}"/>
+			</h:commandButton>
+			<h:commandButton value="Excluir" onclick="return confirm('Confirma a exclusão?')" action="#{produtoControllerValdemar.excluir}">
+				<f:setPropertyActionListener value="#{produto}" target="#{produtoControllerValdemar.produto}"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>

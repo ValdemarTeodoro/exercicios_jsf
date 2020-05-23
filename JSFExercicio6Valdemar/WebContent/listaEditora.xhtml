@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Lista de Editora</title>
+</h:head>
+<h:body>
+	<h:form>
+	<h1>Lista de Editora</h1>
+	<h:messages/>
+	<h:dataTable border="1" value="#{editoraControllerValdemar.lista}" var="editora">
+	
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Id"/>
+			</f:facet>
+			<h:outputText value="#{editora.id}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Editora"/>
+			</f:facet>
+			<h:outputText value="#{editora.editora}"/>
+		</h:column>
+		
+		<h:column>
+			<f:facet name="header">
+				<h:outputText value="Ação"/>
+			</f:facet>
+			<h:commandButton value="Editar" action="#{editoraControllerValdemar.editar}">
+				<f:setPropertyActionListener value="#{editora}" target="#{editoraControllerValdemar.editoraValdemar}"/>
+			</h:commandButton>
+			<h:commandButton value="Excluir" onclick="return confirm('Confirma a exclusão?')" action="#{editoraControllerValdemar.excluir}">
+				<f:setPropertyActionListener value="#{editora}" target="#{editoraControllerValdemar.editoraValdemar}"/>
+			</h:commandButton>
+		</h:column>
+	</h:dataTable>
+	</h:form>
+</h:body>
+</html>

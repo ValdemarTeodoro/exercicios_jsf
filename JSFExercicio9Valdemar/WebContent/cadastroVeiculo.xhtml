@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head>
+	<title>Cadastro Veiculo</title>
+</h:head>
+<h:body>
+<h:form>
+<h1>Cadastro Veiculo</h1>
+<h:messages/>
+<h:panelGrid columns="2">
+	<h:outputText value="Gravidade: *"/>
+	<h:inputText value="#{veiculoControllerValdemar.veiculoValdemar.gravidadeVeiculo}"
+		required="true"
+		requiredMessage="O camopo Gravidade é obrigatório"/>
+	
+	<h:outputText value="Descrição de Veiculo: *"/>
+	<h:inputText value="#{veiculoControllerValdemar.veiculoValdemar.descricaoVeiculo}"
+		required="true"
+		requiredMessage="O campo Descrição de Veiculo é obrigatório"/>
+		
+	<h:commandButton value="Salvar" action="#{veiculoControllerValdemar.salvar}"/>
+	<h:commandButton value="Limpar" action="cadastroVeiculo.xhtml" actionListener="#{veiculoControllerValdemar.limparCampos}"/>
+</h:panelGrid>
+</h:form>
+</h:body>
+</html>
